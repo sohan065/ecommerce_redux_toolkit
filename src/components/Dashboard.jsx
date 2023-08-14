@@ -1,5 +1,9 @@
 import React from "react";
-
+import Product from "./Product";
 export default function Dashboard() {
-  return <div>Dashboard</div>;
+  return (
+    <div>
+      <Product />
+    </div>
+  );
 }

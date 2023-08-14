@@ -1,10 +1,11 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import NavBarPanel from "./NavBarPanel";
 
 export default function RootLayout() {
   return (
     <>
-      <h1>RootLayout</h1>
+      <NavBarPanel />
       <main>
         <Outlet />
       </main>

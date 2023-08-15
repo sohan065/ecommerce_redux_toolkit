@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { remove } from "../features/product/cartSlice";
+import { Alert } from "react-bootstrap";
 
 export default function Cart() {
   const cartProducts = useSelector((state) => state.cart);
@@ -10,6 +11,13 @@ export default function Cart() {
   const removeToCart = (id) => {
     dispatch(remove(id));
   };
+  if (cartProducts.length == 0) {
+    return (
+      <Alert key="danger" variant="danger">
+        Cart Is Empty
+      </Alert>
+    );
+  }
   const card = cartProducts.map((product) => (
     <div className="col-md-12" style={{ marginBottom: "10px" }}>
       <Card key={product.id} className="h-100">

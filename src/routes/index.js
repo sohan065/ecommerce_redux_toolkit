@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Cart from "../components/Cart";
 import Dashboard from "../pages/Dashboard";
+import SignUp from "../pages/SignUp";
 import RootLayout from "../layouts/RootLayout";
 export default function index() {
   const router = createBrowserRouter(
@@ -14,6 +15,7 @@ export default function index() {
       <Route path="/" element={<RootLayout />}>
         <Route index element={<Dashboard />}></Route>
         <Route path="/cart" element={<Cart />}></Route>
+        <Route path="/signup" element={<SignUp />}></Route>
       </Route>
     )
   );

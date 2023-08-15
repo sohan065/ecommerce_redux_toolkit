@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { useDispatch, useSelector } from "react-redux";
-import { add } from "../store/cartSlice";
-import { getAllProduct } from "../store/productSlice";
+import { add } from "../features/product/cartSlice";
+import { getAllProduct } from "../features/product/productSlice";
 import StatusCode from "../utils/StatusCode";
 import Alert from "react-bootstrap/Alert";
 export default function Product() {

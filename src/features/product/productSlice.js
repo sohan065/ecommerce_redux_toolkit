@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import StatusCode from "../utils/StatusCode";
+import StatusCode from "../../utils/StatusCode";
 const initialState = {
   data: [],
   status: "",

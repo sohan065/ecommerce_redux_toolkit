@@ -1,18 +1,17 @@
-import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import { Link } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
-export default function SignUp() {
-  const [user, setUser] = useState({});
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+export default function LogIn() {
+  const [credentials, setCredentials] = useState({});
   const handleNameChange = (event) => {
     const { name, value } = event.target;
-    setUser({ ...user, [name]: value });
+    setCredentials({ ...credentials, [name]: value });
   };
   const handleSubmit = (event) => {
     event.preventDefault();
   };
-
   return (
     <div
       className="container-fluid"
@@ -22,17 +21,6 @@ export default function SignUp() {
         border: "2px solid gray",
       }}>
       <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" controlId="formBasicName">
-          <Form.Label>User name</Form.Label>
-          <Form.Control
-            type="text"
-            name="name"
-            onChange={handleNameChange}
-            placeholder="Enter name"
-            required
-          />
-        </Form.Group>
-
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
@@ -55,9 +43,6 @@ export default function SignUp() {
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
         <div
           className="mb-3"
           style={{
@@ -66,12 +51,12 @@ export default function SignUp() {
             gap: "10px",
           }}>
           <Button variant="primary" type="submit">
-            <Nav.Link to="/login" as={Link}>
-              Login
-            </Nav.Link>
+            Login
           </Button>
           <Button variant="primary" type="submit">
-            Registration
+            <Nav.Link to="/signup" as={Link}>
+              Registration
+            </Nav.Link>
           </Button>
         </div>
       </Form>

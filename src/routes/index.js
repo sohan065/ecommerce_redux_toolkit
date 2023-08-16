@@ -9,6 +9,7 @@ import Cart from "../components/Cart";
 import Dashboard from "../pages/Dashboard";
 import SignUp from "../pages/SignUp";
 import RootLayout from "../layouts/RootLayout";
+import LogIn from "../pages/LogIn";
 export default function index() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -16,6 +17,7 @@ export default function index() {
         <Route index element={<Dashboard />}></Route>
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/signup" element={<SignUp />}></Route>
+        <Route path="/login" element={<LogIn />}></Route>
       </Route>
     )
   );

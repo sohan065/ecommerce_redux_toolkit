@@ -17,7 +17,7 @@ export default function NavBarPanel() {
         </Nav>
         <Navbar.Collapse id="navbarScroll" className="justify-content-end">
           <Navbar.Text style={{ marginRight: "15px" }}>
-            <Nav.Link to="/signup" as={Link}>
+            <Nav.Link to="/login" as={Link}>
               SignUp/Login
             </Nav.Link>
           </Navbar.Text>

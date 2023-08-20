@@ -3,14 +3,35 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
+import Alert from "react-bootstrap/Alert";
+import axios from "axios";
 export default function SignUp() {
   const [user, setUser] = useState({});
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(null);
   const handleNameChange = (event) => {
     const { name, value } = event.target;
     setUser({ ...user, [name]: value });
   };
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:8000/user/create",
+        user
+      );
+      if (response.status === 201) {
+        setSuccess(true);
+        setError(null);
+        setUser({ name: "", email: "", password: "" });
+      } else {
+        setSuccess(false);
+        setError("Failed to create user");
+      }
+    } catch (error) {
+      setSuccess(false);
+      setError("failed");
+    }
   };
 
   return (
@@ -27,6 +48,7 @@ export default function SignUp() {
           <Form.Control
             type="text"
             name="name"
+            value={user.name}
             onChange={handleNameChange}
             placeholder="Enter name"
             required
@@ -38,6 +60,7 @@ export default function SignUp() {
           <Form.Control
             type="email"
             name="email"
+            value={user.email}
             onChange={handleNameChange}
             placeholder="Enter email"
             required
@@ -49,6 +72,7 @@ export default function SignUp() {
           <Form.Control
             type="password"
             name="password"
+            value={user.password}
             onChange={handleNameChange}
             placeholder="Password"
             required
@@ -71,10 +95,20 @@ export default function SignUp() {
             </Nav.Link>
           </Button>
           <Button variant="primary" type="submit">
-            Registration
+            Submit
           </Button>
         </div>
       </Form>
+      {error && (
+        <Alert key="danger" variant="danger">
+          {error}
+        </Alert>
+      )}
+      {success && (
+        <Alert key="primary" variant="primary">
+          Success
+        </Alert>
+      )}
     </div>
   );
 }
